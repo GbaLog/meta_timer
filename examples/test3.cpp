@@ -1,6 +1,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 #include "../timer.hpp"
 #include <iostream>
+#include <thread>
 /////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
@@ -13,5 +14,6 @@ int main()
             << it << ": "
             << timer.get_elapsed_time<tools::milliseconds>()
             << std::endl;
+        timer.restart();
     }
 }
