@@ -48,6 +48,12 @@ namespace tools
             return tmp_start;
         }
         //-------------------------------------------------------------------------------
+        template<typename _Duration>
+        typename _Duration::rep get_elapsed_time() const
+        {
+            return std::duration_cast<_Duration>(clock::now() - start_time).count();
+        }
+        //-------------------------------------------------------------------------------
     private:
         //-------------------------------------------------------------------------------
         time_point start_time;
