@@ -30,7 +30,7 @@ namespace tools
         template<typename _Time>
         bool gone( _Time&& time )
         {
-            return (clock::now() - start_time) <= time;
+            return (clock::now() - start_time) >= time;
         }
         //-------------------------------------------------------------------------------
         template<typename _Time>
@@ -38,7 +38,7 @@ namespace tools
         {
             auto tmp_start = start_time;
             start_time = clock::now();
-            return (start_time - tmp_start) <= time;
+            return (start_time - tmp_start) >= time;
         }
         //-------------------------------------------------------------------------------
         time_point restart()
@@ -49,7 +49,7 @@ namespace tools
         }
         //-------------------------------------------------------------------------------
         template<typename _Duration>
-        typename _Duration::rep get_elapsed_time() const
+        inline typename _Duration::rep get_elapsed_time() const
         {
             return std::chrono::duration_cast<_Duration>(clock::now() - start_time).count();
         }
